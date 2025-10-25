@@ -25,7 +25,7 @@ public class Inicio extends Application {
     public void start(Stage primaryStage) {
        
         Button btn = new Button("Inicio");
-        btn.setOnAction(event -> System.out.println("Hello World!"));
+        btn.setOnAction(event -> System.out.println("Hello MUNDO!"));
        
         Button btn2 = new Button("Opciones");
         btn2.setOnAction(event -> System.out.println("Hello World!"));
