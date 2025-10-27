@@ -46,6 +46,12 @@ public class MenuOpciones {
             }
         });
         
+        btn4.setOnAction(e -> {
+         Español esp = new Español();
+         esp.mostrar(stage);
+        });
+
+        
         btn1.setOnAction(e -> {
          Matematicas m = new Matematicas();
           m.mostrar(stage);
