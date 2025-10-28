@@ -10,6 +10,7 @@ package Clases;
  */
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -24,10 +25,29 @@ public class MenuOpciones {
         Button btnVolver = new Button("Volver");
 
         // Estiloslos del menú principal
-        String estilo1 = "-fx-font-size: 29px; -fx-background-radius: 30; -fx-background-color: #0071E3; -fx-text-fill: white;";
-        String estilo2 = "-fx-font-size: 29px; -fx-background-radius: 30; -fx-background-color: #07E095; -fx-text-fill: white;";
-        String estilo3 = "-fx-font-size: 29px; -fx-background-radius: 30; -fx-background-color: #E07504; -fx-text-fill: white;";
-        String estiloVolver = "-fx-font-size: 25px; -fx-background-radius: 30; -fx-background-color: #9B4DCA; -fx-text-fill: white;";
+        String estilo1 = "-fx-font-size: 29px; "
+                + "-fx-background-radius: 30; "
+                + "-fx-background-color: linear-gradient(to bottom, #2E003E, #4B0082); "
+                + "-fx-text-fill: #C0F8FF; "
+                + "-fx-effect: dropshadow(gaussian, #8A2BE2, 10, 0.5, 0, 0);";
+
+        String estilo2 = "-fx-font-size: 29px; "
+                + "-fx-background-radius: 30; "
+                + "-fx-background-color: linear-gradient(to bottom, #001F3F, #0074D9); "
+                + "-fx-text-fill: #FFFFFF; "
+                + "-fx-effect: dropshadow(gaussian, #00FFFF, 8, 0.4, 0, 0);";
+
+        String estilo3 = "-fx-font-size: 29px; "
+                + "-fx-background-radius: 30; "
+                + "-fx-background-color: linear-gradient(to bottom, #3D0C02, #8B0000); "
+                + "-fx-text-fill: #FFD700; "
+                + "-fx-effect: dropshadow(gaussian, #FF4500, 12, 0.6, 0, 0);";
+
+        String estiloVolver = "-fx-font-size: 25px; "
+                + "-fx-background-radius: 30; "
+                + "-fx-background-color: linear-gradient(to bottom, #4B0082, #9B4DCA); "
+                + "-fx-text-fill: #E0E0FF; "
+                + "-fx-effect: dropshadow(gaussian, #BA55D3, 10, 0.5, 0, 0);";
 
         btn1.setStyle(estilo1);
         btn2.setStyle(estilo2);
@@ -56,12 +76,17 @@ public class MenuOpciones {
          Matematicas m = new Matematicas();
           m.mostrar(stage);
         });
+        
+        // Contenedor de botones
+        VBox botones = new VBox(20, btn1, btn2, btn3, btn4, btnVolver);
+botones.setAlignment(javafx.geometry.Pos.CENTER);
 
+// Fondo estrellado animado
+FondoEstrellado fondo = new FondoEstrellado(900, 650);
 
-        VBox root = new VBox(20);
-        root.getChildren().addAll(btn1, btn2, btn3, btn4, btnVolver);
-        root.setAlignment(javafx.geometry.Pos.CENTER);
-        root.setStyle("-fx-background-color: linear-gradient(to bottom, #F296BC, #E070A9);");
+// Superponer fondo y botones organizados
+StackPane root = new StackPane(fondo, botones);
+root.setAlignment(javafx.geometry.Pos.CENTER);
 
         Scene scene = new Scene(root, 900, 650);
         stage.setTitle("Selecciona una opción");

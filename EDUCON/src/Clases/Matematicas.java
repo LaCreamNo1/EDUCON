@@ -27,7 +27,11 @@ public class Matematicas {
         // Panel derecho (calculadora)
         pantalla = new TextField();
         pantalla.setEditable(false);
-        pantalla.setStyle("-fx-font-size: 24px; -fx-background-color: white; -fx-text-fill: black;");
+        pantalla.setStyle("-fx-font-size: 22px; "
+         + "-fx-background-color: linear-gradient(to bottom, #001F3F, #0074D9); "
+         + "-fx-text-fill: #FFFFFF; "
+         + "-fx-background-radius: 15; "
+         + "-fx-effect: dropshadow(gaussian, #00FFFF, 6, 0.4, 0, 0);");
         pantalla.setPrefHeight(60);
 
         GridPane panelNumeros = new GridPane();
@@ -42,7 +46,11 @@ public class Matematicas {
             for (int j = 0; j < 3; j++) {
                 Button b = new Button(String.valueOf(num));
                 b.setPrefSize(60, 60);
-                b.setStyle("-fx-font-size: 22px; -fx-background-color: #07E095; -fx-text-fill: white; -fx-background-radius: 15;");
+                b.setStyle("-fx-font-size: 22px; "
+         + "-fx-background-color: linear-gradient(to bottom, #2E003E, #4B0082); "
+         + "-fx-text-fill: #C0F8FF; "
+         + "-fx-background-radius: 15; "
+         + "-fx-effect: dropshadow(gaussian, #8A2BE2, 8, 0.5, 0, 0);");
                 final int n = num;
                 b.setOnAction(e -> {
                     if (nuevaOperacion) {
@@ -59,7 +67,11 @@ public class Matematicas {
         // Botón cero
         Button b0 = new Button("0");
         b0.setPrefSize(60, 60);
-        b0.setStyle("-fx-font-size: 22px; -fx-background-color: #07E095; -fx-text-fill: white; -fx-background-radius: 15;");
+        b0.setStyle("-fx-font-size: 22px; "
+          + "-fx-background-color: linear-gradient(to bottom, #001F3F, #0074D9); "
+          + "-fx-text-fill: #FFFFFF; "
+          + "-fx-background-radius: 15; "
+          + "-fx-effect: dropshadow(gaussian, #00FFFF, 6, 0.4, 0, 0);");
         b0.setOnAction(e -> pantalla.appendText("0"));
         panelNumeros.add(b0, 1, 3);
 
@@ -74,7 +86,11 @@ public class Matematicas {
         Button[] operaciones = {suma, resta, multi, divi, igual, limpiar};
         for (Button b : operaciones) {
             b.setPrefSize(60, 60);
-            b.setStyle("-fx-font-size: 22px; -fx-background-color: #0071E3; -fx-text-fill: white; -fx-background-radius: 15;");
+            b.setStyle("-fx-font-size: 22px; "
+         + "-fx-background-color: linear-gradient(to bottom, #2E003E, #4B0082); "
+         + "-fx-text-fill: #C0F8FF; "
+         + "-fx-background-radius: 15; "
+         + "-fx-effect: dropshadow(gaussian, #8A2BE2, 8, 0.5, 0, 0);");
         }
 
         suma.setOnAction(e -> establecerOperacion("+"));
@@ -90,7 +106,11 @@ public class Matematicas {
 
         // Panel de fracciones (propias/impropias)
         Button fraccion = new Button("Fracción");
-        fraccion.setStyle("-fx-font-size: 22px; -fx-background-color: #E07504; -fx-text-fill: white; -fx-background-radius: 15;");
+        fraccion.setStyle("-fx-font-size: 29px; "
+                + "-fx-background-radius: 30; "
+                + "-fx-background-color: linear-gradient(to bottom, #3D0C02, #8B0000); "
+                + "-fx-text-fill: #FFD700; "
+                + "-fx-effect: dropshadow(gaussian, #FF4500, 12, 0.6, 0, 0);");
         fraccion.setPrefWidth(140);
         fraccion.setOnAction(e -> verificarFraccion());
 
@@ -107,7 +127,11 @@ public class Matematicas {
 
         // Botón volver
         Button volver = new Button("Volver");
-        volver.setStyle("-fx-font-size: 22px; -fx-background-radius: 30; -fx-background-color: #9B4DCA; -fx-text-fill: white;");
+        volver.setStyle("-fx-font-size: 29px; "
+                + "-fx-background-radius: 30; "
+                + "-fx-background-color: linear-gradient(to bottom, #001F3F, #0074D9); "
+                + "-fx-text-fill: #FFFFFF; "
+                + "-fx-effect: dropshadow(gaussian, #00FFFF, 8, 0.4, 0, 0);");
         volver.setOnAction(e -> {
             pantalla.clear();
             MenuOpciones menu = new MenuOpciones();
@@ -116,9 +140,16 @@ public class Matematicas {
 
         HBox contenedorPrincipal = new HBox(40, panelIzquierdo, panelDerecho);
         contenedorPrincipal.setAlignment(Pos.CENTER);
-        contenedorPrincipal.setStyle("-fx-background-color: linear-gradient(to bottom, #F296BC, #E070A9);");
+        contenedorPrincipal.setStyle("-fx-background-color: linear-gradient(to bottom, #0B0C2A, #1F1B4A, #3C2A6D);");
+        
+         // Fondo estrellado animado
+        FondoEstrellado fondo = new FondoEstrellado(900, 650);
 
-        VBox root = new VBox(30, contenedorPrincipal, volver);
+        // Superponer fondo y botones
+        StackPane root = new StackPane(fondo, contenedorPrincipal);
+        
+
+        //VBox root = new VBox(30, contenedorPrincipal, volver);
         root.setAlignment(Pos.CENTER);
         root.setPadding(new Insets(20));
 
@@ -126,6 +157,9 @@ public class Matematicas {
         stage.setTitle("Matemáticas");
         stage.setScene(scene);
         stage.show();
+        
+        
+        
     }
 
     private void establecerOperacion(String op) {

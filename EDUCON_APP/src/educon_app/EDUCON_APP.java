@@ -20,6 +20,7 @@ public class EDUCON_APP extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
         
+        
         Scene scene = new Scene(root);
         
         stage.setScene(scene);

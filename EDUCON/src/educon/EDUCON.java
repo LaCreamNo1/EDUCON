@@ -4,6 +4,7 @@
  */
 package educon;
 
+import Clases.Inicio;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -19,7 +20,7 @@ import javafx.stage.Stage;
 public class EDUCON extends Application {
     
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws Exception {
         Button btn = new Button();
         btn.setText("Say 'Hello World'");
         btn.setOnAction(new EventHandler<ActionEvent>() {
@@ -34,6 +35,7 @@ public class EDUCON extends Application {
         root.getChildren().add(btn);
         
         Scene scene = new Scene(root, 300, 250);
+        
         
         primaryStage.setTitle("Hello World!");
         primaryStage.setScene(scene);
